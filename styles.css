@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Game Notification */
+.game-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #00ff41;
+    border-radius: 15px;
+    padding: 40px 60px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+    animation: slideIn 0.3s ease-out;
+}
+
+.game-notification h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #00ff41;
+}
+
+.game-notification p {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff0066, #00ff41, #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #aaa;
+}
+
+.game-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.game-btn {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid #00ff41;
+    background: rgba(0, 255, 65, 0.1);
+    color: #00ff41;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+    background: rgba(0, 255, 65, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+}
+
+.game-btn.active {
+    background: #00ff41;
+    color: #0f0c29;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.game.active {
+    display: block;
+}
+
+.game h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #00ff41;
+}
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.game-info p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.game-info span {
+    color: #00ff41;
+}
+
+.game-info button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background: #ff0066;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-info button:hover {
+    background: #cc0052;
+    transform: scale(1.05);
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 15px;
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Snake & Breakout Canvas */
+canvas {
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #00ff41;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+/* Memory Game */
+#memory-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.memory-card {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.memory-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    border-radius: 10px;
+    border: 3px solid #00ff41;
+}
+
+.memory-card-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.memory-card-back {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Tic-Tac-Toe */
+#ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.ttt-cell {
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 3px solid #00ff41;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: #00ff41;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ttt-cell:hover {
+    background: rgba(0, 255, 65, 0.2);
+    transform: scale(1.05);
+}
+
+#ttt-status {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Tetris Game */
+#tetris-canvas {
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #00ff41;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    background: #1a1a2e;
+}
+
+/* Pac-Man Game */
+#pacman-canvas {
+    display: block;
+    margin: 20px auto;
+    border: 3px solid #ffff00;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+    background: #000000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .game-btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #memory-board {
+        grid-template-columns: repeat(4, 70px);
+    }
+
+    .memory-card {
+        width: 70px;
+        height: 70px;
+    }
+
+    .memory-card-front,
+    .memory-card-back {
+        font-size: 2em;
+    }
+
+    #ttt-board {
+        grid-template-columns: repeat(3, 90px);
+    }
+
+    .ttt-cell {
+        width: 90px;
+        height: 90px;
+        font-size: 2.5em;
+    }
+
+    #2048-board {
+        grid-template-columns: repeat(4, 70px);
+    }
+
+    .tile-2048 {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5em;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 1.2em;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 1em;
+    }
+}

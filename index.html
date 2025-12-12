@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamescape - Your Ultimate Gaming Destination | Play Classic Arcade Games Online</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Play Gamescape - the ultimate collection of classic arcade games online! Enjoy Snake, Tetris, Pac-Man, Breakout, Memory Cards, and Tic-Tac-Toe all in one place. Free to play!">
+    <meta name="keywords" content="gamescape, play gamescape, arcade games, online games, snake game, tetris, pac-man, breakout, memory cards, tic-tac-toe, retro games, classic games, free games">
+    <meta name="author" content="Gamescape">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://playgamescape.com/">
+    <meta property="og:title" content="Gamescape - Your Ultimate Gaming Destination">
+    <meta property="og:description" content="Play classic arcade games online! Snake, Tetris, Pac-Man, Breakout, and more - all free to play!">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gamescape - Your Ultimate Gaming Destination">
+    <meta name="twitter:description" content="Play classic arcade games online! Snake, Tetris, Pac-Man, Breakout, and more - all free to play!">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎮 Gamescape 🎮</h1>
+        <p>Your Ultimate Gaming Destination</p>
+    </header>
+
+    <nav class="game-selector">
+        <button class="game-btn active" data-game="snake">Snake</button>
+        <button class="game-btn" data-game="memory">Memory Cards</button>
+        <button class="game-btn" data-game="tictactoe">Tic-Tac-Toe</button>
+        <button class="game-btn" data-game="breakout">Breakout</button>
+        <button class="game-btn" data-game="tetris">Tetris</button>
+        <button class="game-btn" data-game="pacman">Pac-Man</button>
+    </nav>
+
+    <div class="game-container">
+        <!-- Snake Game -->
+        <div id="snake" class="game active">
+            <h2>Snake Game</h2>
+            <div class="game-info">
+                <p>Score: <span id="snake-score">0</span></p>
+                <button id="snake-start">Start Game</button>
+            </div>
+            <canvas id="snake-canvas" width="400" height="400"></canvas>
+            <p class="instructions">Use Arrow Keys to move</p>
+        </div>
+
+        <!-- Memory Card Game -->
+        <div id="memory" class="game">
+            <h2>Memory Cards</h2>
+            <div class="game-info">
+                <p>Moves: <span id="memory-moves">0</span></p>
+                <p>Matches: <span id="memory-matches">0</span></p>
+                <button id="memory-start">New Game</button>
+            </div>
+            <div id="memory-board"></div>
+        </div>
+
+        <!-- Tic-Tac-Toe Game -->
+        <div id="tictactoe" class="game">
+            <h2>Tic-Tac-Toe</h2>
+            <div class="game-info">
+                <p>Current Player: <span id="ttt-player">X</span></p>
+                <button id="ttt-restart">Restart</button>
+            </div>
+            <div id="ttt-board"></div>
+            <p id="ttt-status"></p>
+        </div>
+
+        <!-- Breakout Game -->
+        <div id="breakout" class="game">
+            <h2>Breakout</h2>
+            <div class="game-info">
+                <p>Score: <span id="breakout-score">0</span></p>
+                <p>Lives: <span id="breakout-lives">3</span></p>
+                <button id="breakout-start">Start Game</button>
+            </div>
+            <canvas id="breakout-canvas" width="480" height="400"></canvas>
+            <p class="instructions">Use Left/Right Arrow Keys to control paddle</p>
+            <p class="instructions" style="font-size: 0.85em; margin-top: 5px;">💣 Bomb (explodes area) | ⚽ Extra Ball | ❤️ Extra Life | ⚡ Auto Lasers (5 sec)</p>
+        </div>
+
+        <!-- Tetris Game -->
+        <div id="tetris" class="game">
+            <h2>Tetris</h2>
+            <div class="game-info">
+                <p>Score: <span id="tetris-score">0</span></p>
+                <p>Lines: <span id="tetris-lines">0</span></p>
+                <p>Level: <span id="tetris-level">1</span></p>
+                <button id="tetris-start">Start Game</button>
+            </div>
+            <canvas id="tetris-canvas" width="300" height="600"></canvas>
+            <p class="instructions">Arrow Keys: Move/Rotate | Space: Drop</p>
+        </div>
+
+        <!-- Pac-Man Game -->
+        <div id="pacman" class="game">
+            <h2>Pac-Man</h2>
+            <div class="game-info">
+                <p>Score: <span id="pacman-score">0</span></p>
+                <p>Lives: <span id="pacman-lives">3</span></p>
+                <p>Level: <span id="pacman-level">1</span></p>
+                <button id="pacman-start">Start Game</button>
+            </div>
+            <canvas id="pacman-canvas" width="560" height="620"></canvas>
+            <p class="instructions">Use Arrow Keys to move</p>
+        </div>
+    </div>
+
+    <script src="snake.js"></script>
+    <script src="memory.js"></script>
+    <script src="tictactoe.js"></script>
+    <script src="breakout.js"></script>
+    <script src="tetris.js"></script>
+    <script src="pacman.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
